@@ -52,12 +52,12 @@
 		<?php 
 
 			// Creating Arrays
-			$student = array("ahmed", "wael", "asmaa", "ali", "nesma");
+			$students = array("ahmed", "wael", "asmaa", "ali", "fares");
 			
-			$arabic  = array(50, 70, 50, 100);
-			$english = array(50, 70, 50, 100);
-			$math    = array(50, 70, 50, 100);
-			$science = array(50, 70, 50, 100);
+			$arabic  = array(50, 20, 80, 100, 10);
+			$english = array(30, 45, 60, 90,  20);
+			$math    = array(20, 55, 70, 100, 90);
+			$science = array(50, 10, 20, 80,  100);
 		?>
 
 		<table>
@@ -70,32 +70,37 @@
 				<th>Total</th>
 				<th>Status</th>	
 			</tr>
+			
+			<?php 
+
+			$total = 0;
+			$classSuccess = 0;
+			$classFailed = 0;
+			for ($i=0, $count= count($students);$i < $count ; $i++) { 
+			$total = $arabic[$i] + $english[$i] + $math[$i] + $science[$i];
+			$cssClass = ($total > 200) ? 'green' : 'red'; 
+			$status = ($total > 200) ? 'succeed' : 'failed';
+
+			if($total > 200){
+				$classSuccess++;
+			} else{
+				$classFailed++;
+			}
+			echo "	
+				<tr>
+					<td>{$students[$i]}</td>
+					<td>{$arabic[$i]}</td>
+					<td>{$english[$i]}</td>
+					<td>{$math[$i]}</td>
+					<td>{$science[$i]}</td>
+					<td>{$total}</td>
+					<td><span class=\"{$cssClass}\">{$status}</span></td>
+				</tr>";
+			}
+			?>
+
 			<tr>
-				<td>Mohammed</td>
-				<td>50</td>
-				<td>70</td>
-				<td>50</td>
-				<td>100</td>
-				<td>270</td>
-				<td><span class="green">Succeed</span></td>
-			</tr>
-			<tr>
-				<td>Osama</td>
-				<td>90</td>
-				<td>20</td>
-				<td>50</td>
-				<td>30</td>
-				<td>190</td>
-				<td><span class="red">Failed</span></td>
-			</tr>
-			<tr>
-				<td>Asmaa</td>
-				<td>100</td>
-				<td>40</td>
-				<td>60</td>
-				<td>50</td>
-				<td>250</td>
-				<td><span class="green">Succeed</span></td>
+				<th colspan="7">This class <?php echo ($classSuccess >= $classFailed) ? 'succeed' : 'failed' ?></th>
 			</tr>
 			
 
