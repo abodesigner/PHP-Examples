@@ -77,9 +77,9 @@
 			$classSuccess = 0;
 			$classFailed = 0;
 			for ($i=0, $count= count($students);$i < $count ; $i++) { 
-			$total = $arabic[$i] + $english[$i] + $math[$i] + $science[$i];
-			$cssClass = ($total > 200) ? 'green' : 'red'; 
-			$status = ($total > 200) ? 'succeed' : 'failed';
+				$total = $arabic[$i] + $english[$i] + $math[$i] + $science[$i];
+				$cssClass = ($total > 200) ? 'green' : 'red'; 
+				$status = ($total > 200) ? 'succeed' : 'failed';
 
 			if($total > 200){
 				$classSuccess++;
